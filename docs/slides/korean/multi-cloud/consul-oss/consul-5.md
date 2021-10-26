@@ -168,6 +168,26 @@ F5 BIG-IP AS3 서비스 검색 통합을 통해 Consul은 Consul의 카탈로그
 
 ???
 We've been working tirelessly with our partners to provide solid and reliable integrations with the tools you may already have. One of those partners is F5. The resources on this page will show you how to dynamically configure your F5 BIG-IP load balancers so you can help your engineering team automate software delivery.
+---
+name: Service-Registry-Integration-Native-NIA
+class: img-right compact
+Example - 네트워크 인프라 자동화 (NIA)
+-------------------------
+.center[![:scale 100%](https://github.com/jsp-hashicorp/nia_cts/raw/main/nia.png)]
+
+네트워크 인프라 자동화를 위한 핵심 구성 요소인 consul-terraform-sync라는 프로세스를 통해, Consul이 감지한 애플리케이션 단의 변경을 자동으로 네트워크 단에 적용하여 트래픽을 처리할 수 있게 합니다.
+
+.center[
+<a href="https://learn.hashicorp.com/collections/consul/network-infrastructure-automation" target=_blank>Network Infrastructure Automation(NIA)</a>
+]
+
+.center[
+<a href="https://github.com/hashicorp/f5-terraform-consul-sd-webinar" target=_blank>Demo Repo</a>
+]
+
+
+???
+We've been working tirelessly with our partners to provide solid and reliable integrations with the tools you may already have. One of those partners is F5. The resources on this page will show you how to dynamically configure your F5 BIG-IP load balancers so you can help your engineering team automate software delivery.
 
 ---
 name: Service-Discovery-Lab
