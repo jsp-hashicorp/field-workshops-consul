@@ -51,10 +51,11 @@ name: Table-of-Contents
     * Lab - Service Discovery with Consul
 1. Service Segmentation
     * Lab - Service Mesh with Consul
+    
     * Bonus Lab - Service Mesh with Consul on K8s
     * Bonus Lab - Service Mesh with Consul Mesh Gateways
 
-Lab : https://play.instruqt.com/hashicorp/topics/consul-workshops
+Lab : https://play.instruqt.com/hashicorp/invite/nqubqluwrxfy
 
 ???
 오늘 세션에서는 다음 주제를 다룰 것입니다.
