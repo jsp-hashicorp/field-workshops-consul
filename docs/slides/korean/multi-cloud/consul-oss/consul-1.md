@@ -94,7 +94,7 @@ As hypervisors started becoming the standard for data centers, we started seeing
 ---
 name: Introduction-of-the-Microservice
 class: img-right
-마이크로서비스 아케택처 환경
+마이크로서비스 아키텍처 환경
 -------------------------
 .center[![:scale 100%](images/microservices.png)]
 
