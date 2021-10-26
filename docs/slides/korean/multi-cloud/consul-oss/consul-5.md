@@ -173,9 +173,10 @@ name: Service-Registry-Integration-Native-NIA
 class: img-right compact
 Example - 네트워크 인프라 자동화 (NIA)
 -------------------------
+네트워크 인프라 자동화를 위한 핵심 구성 요소인 consul-terraform-sync라는 프로세스를 통해, Consul이 감지한 애플리케이션 단의 변경을 자동으로 네트워크 단에 적용하여 트래픽을 처리할 수 있게 합니다.
+
 .center[![:scale 100%](https://github.com/jsp-hashicorp/nia_cts/raw/main/nia.png)]
 
-네트워크 인프라 자동화를 위한 핵심 구성 요소인 consul-terraform-sync라는 프로세스를 통해, Consul이 감지한 애플리케이션 단의 변경을 자동으로 네트워크 단에 적용하여 트래픽을 처리할 수 있게 합니다.
 
 .center[
 <a href="https://learn.hashicorp.com/collections/consul/network-infrastructure-automation" target=_blank>Network Infrastructure Automation(NIA)</a>
