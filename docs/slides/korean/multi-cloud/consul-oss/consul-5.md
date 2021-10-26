@@ -11,10 +11,10 @@ Service Discovery - Intro
 .center[![:scale 100%](images/service_registration_catalog.png)]
 
 * DNS 및 API 인터페이스
-* 상태 체크
-* Load Balancer 통합
+* 상태 체크 (Health Check)
+* Load Balancer 연계
 * Kubernetes
-* 다중 클라우드, 다중 DC
+* 멀티 클라우드, 멀티 DC
 
 ???
 The starting point for networking with Consul is the service registry. This integrates health checks and provides DNS and API interfaces to enable any service to discover and be discovered by other services.
@@ -24,12 +24,12 @@ Consul can be integrated with other services that manage existing north-south tr
 ---
 name: Service-Discovery-Lab-Servers
 class: img-right compact
-Service Discovery - Servers
+Service Discovery - 서버
 -------------------------
 .center[![:scale 100%](images/consul_dataflow_lan.png)]
 
-* Service catalog
-* Replication via Raft
+* Service catalog 관리
+* Raft 기반 데이터 복제
 
 ???
 Consul's service discovery is backed by a service catalog. The catalog maintains the high-level view of the cluster and is used to expose this information via the various interfaces Consul provides, including DNS and HTTP.
@@ -39,12 +39,12 @@ The catalog is maintained only by server nodes because it's replicated via the R
 ---
 name: Service-Discovery-Lab-Clients
 class: img-right compact
-Service Discovery - Clients
+Service Discovery - 클라이언트
 -------------------------
 .center[![:scale 100%](images/consul_health_checks.png)]
 
 * 클라이언트는 로컬의 서비스를 확인
-* Gossip을 통해 노드 상태 확인
+* Gossip 기반 노드 상태 확인(Health Check)
 * 상태 변경에 대한 정보 만 서버로 전송
 * 상태에 대한 서비스 검색 필터
 * 확인 유형 - HTTP, TCP, Script 등
@@ -55,17 +55,17 @@ Each Consul agent maintains its own set of service registrations and health chec
 
 ---
 name: Service-Discovery-Registration
-Service Discovery - Config
+Service Discovery - 구성
 -------------------------
 .center[![:scale 45%](images/nginx_service_definition.png)]
-.center[Nginx example] <br>
+.center[Nginx 구성 예제] <br>
 
 ???
 Configuring a service is pretty straight-forward. Here's an example of a config file to register a simple NGINX service, the health check simple HTTP query on port 80.
 
 ---
 name: Service-Registry-API
-Service Registry - API Interface
+Service Registry - API 인터페이스
 -------------------------
 .center[![:scale 45%](images/service_registry_api.png)]
 .center[API Catalog Request] <br>
@@ -75,7 +75,7 @@ There are a couple of different ways to discover services. The first is by using
 
 ---
 name: Service-Registry-DNS
-Service Registry - DNS Interface
+Service Registry - DNS 인터페이스
 -------------------------
 .center[![:scale 45%](images/service_registry_dns.png)]
 .center[DNS Catalog Request] <br>
@@ -85,7 +85,7 @@ The second way is by using DNS. You can query consul using standard hostname res
 
 ---
 name: Service-Registry-UI
-Service Registry - UI Interface
+Service Registry - UI
 -------------------------
 .center[![:scale 60%](images/service_registry_ui.png)]
 .center[UI Catalog Request] <br>
@@ -101,7 +101,7 @@ Integrations - Consul Template
 .center[![:scale 100%](images/consul_template_example.png)]
 
 * 코드 변경없이 통합
-* 동적 구성
+* 동적 구성 지원
 * Load Balancer 구성 관리
 
 ???
@@ -118,7 +118,7 @@ Integrations - DNS
 -------------------------
 .center[![:scale 100%](images/consul_example_dns.png)]
 
-* Zero-touch
+* Zero-touch (수작업없이 구성 변경)
 * Round robin load balancing
 * 비정상 인스턴스의 자동 필터링
 
@@ -152,7 +152,7 @@ Example - Native Consul Integration with F5 BIG-IP
 -------------------------
 .center[![:scale 100%](images/f5_consul_integration.png)]
 
-F5 BIG-IP AS3 서비스 검색 통합은 큰 변경없이 구성 가능하며, Consul의 카탈로그를 쿼리하여 주어진 서비스의 변경 사항에 대한 업데이트를 가져오기 때문에 별도의 운영자 개입없이 동적으로 노드 풀을 조정합니다.
+F5 BIG-IP AS3 서비스 검색 통합을 통해 Consul은 Consul의 카탈로그를 쿼리하여 주어진 서비스의 변경 사항에 대한 업데이트를 주기적으로 가져오기 때문에 별도의 운영자 개입없이 동적으로 노드 풀을 조정합니다.
 
 .center[
 <a href="https://www.hashicorp.com/resources/zero-touch-application-delivery-with-f5-big-ip-terraform-and-consul" target=_blank>HashiCorp F5 Consul Webinar</a>
@@ -177,9 +177,9 @@ name: Service-Discovery-Lab
 
 * 서비스 등록
 * Health Checks
-* Service Discovery
-* Automated Config Management
-* Seamless DNS integration
+* 서비스 디스커버리
+* 자동화된 구성 관리
+* DNS 연계
 ]
 
 (강사가 실습 환경을 위한 URL을 제공합니다.)

@@ -10,10 +10,10 @@ Service Segmentation - Intro
 -------------------------
 .center[![:scale 100%](images/consul_segmentation_intro.png)]
 
-* Service naming
+* 서비스 이름 지정 (Service naming)
 * 분할(Segmentation)
 * 인가(Authorization)
-* Routing
+* 라우팅 (Routing)
 
 ???
 Consul provides a distributed service mesh to connect, secure, and configure services across any runtime platform and cloud.
@@ -29,9 +29,9 @@ Service Segmentation - Intro
 -------------------------
 .center[![:scale 100%](images/consul_segmentation_intro.png)]
 
-* Automatic mTLS
-* PKI certificate management
-* API-driven
+* 서비스간 통신에 mTLS 자동 적용
+* PKI 인증서 관리 시스템 연계 지원
+* API 기반
 
 ???
 Consul enables fine grained service segmentation to secure service-to-service communication with automatic TLS encryption and identity-based authorization.
@@ -47,18 +47,18 @@ Service Mesh Architecture - Control Plane
 -------------------------
 .center[![:scale 100%](images/connect_control_plane.png)]
 
-* 신뢰할 수 있는 단일 소스
-* 노드의 서비스 관리
-* 접근 관리
+* 단일 진실 공급원 (Single Source of truth)
+* 노드 서비스 관리
+* 노드 접근 제어
 
 ???
 The Control Plane is responsible for configuring the data plane. It's responsible for features like network policy enforcement and providing service discovery data to the data plane. It is designed to be highly scalable by not making direct decisions on traffic by sending instructions to the data plane only when something changes.   This leverages capabilities such as long polling and integrated K/V that have been part of Consul since the beginning.
 
 Consul is the control plane for the Connect service mesh:
 
-* Single source of truth for service catalog, routing, and access policies
-* Manages registered services and health checks for that node
-* Manages certificates and access policies and configures the proxy
+* 서비스 카탈로그, 라우팅 및 액세스 정책을위한 단일 진실 공급원
+* 해당 노드에 대한 등록 서비스 및 상태 검사를 관리합니다
+* 인증서 및 액세스 정책을 관리하고 프록시를 구성합니다
 
 ---
 name: Segmentation-Data-Plane
@@ -89,11 +89,12 @@ Service Mesh - Identity
 
 * 서비스 아이덴티티 제공
 * 모든 트래픽의 암호화
-* SPIFFE와 호환되는 TLS 인증서
+* SPIFFE와 호환되는 표준 TLS 인증서 사용
 * 내장된 CA, 또는 Vault와 같은 외부 CA 연동
 
 ???
 Consul provides each service with an identity encoded as a SPIFFE-compatible TLS certificate. This way, all traffic between services is encrypted. You can use either the build-in certificate authority, or you can use Vault's CA.
+SPIFFE: Secure Production Identity Framework for Everyone
 
 
 ---
@@ -103,7 +104,7 @@ Service Mesh - Service Access Graph
 -------------------------
 .center[![:scale 100%](images/service_access_graph.png)]
 
-* 논리적인 서비스 이름(IP > FQDN)
+* 논리적인 서비스 이름(IP가 아닌)
 * 인스턴스와 독립적으로 확장
 * Raft로 일관성 보장
 * 웹 UI, CLI, API로 관리
@@ -139,7 +140,7 @@ Service Mesh - Mesh Gateways
 -------------------------
 .center[![:scale 80%](images/connect_mesh_gateways.png)]
 
-* 클러스터 간 라우팅 연결
+* 클러스터 간 트래픽을 라우팅
 * 멀티 클러스터 상호 연결을 위한 과제 극복
 * 암호화는 그대로 유지
 

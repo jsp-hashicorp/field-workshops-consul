@@ -23,7 +23,7 @@ Hopefully you're following along with this slide deck on your computer so you ca
 
 ---
 name: The-Shift
-정적인 환경에서 동적인 환경으로의 이동
+정적인 환경에서 동적인 환경으로의 "변화"
 -------------------------
 .center[![:scale 50%](images/static_to_dynamic.png)]
 .center[물리적 서버가 가상화, 컨테이너로...]
@@ -38,16 +38,16 @@ So let's do a quick run through our networking history to see how Consul can add
 ---
 name: Client-Server
 class: img-right
-과거 Baremetal 환경에서는...
+클라이언트/서버 환경
 -------------------------
 .center[![:scale 100%](images/client_server_flow.png)]
 
 <br><br>
-* 서버 당 단일 애플리케이션
+* 애플리케이션 별 서버 사용
 * 앱 이동성 없음
-* IP에 매핑 된 보안
-* 앱의 수평 적 스케일이 거의 없음
-* 높은 신뢰 영역 및 경계
+* IP에 매핑된 보안
+* 앱의 수평적 스케일이 거의 없음
+* 신뢰도가 높은 영역 및 경계
 
 ???
 The Client-Server model was a pretty big shift back in the day, and many didn't think it would survive. The traditional mainframes didn't require near the network demand that the Client/Server model did, and as you can imagine, it was very expensive to upgrade network equipment to support Client/Server. But the pros outweighed the cons, so companies made the investments.
@@ -59,17 +59,17 @@ Each application had its own server (typically over-powered to handle peak times
 ---
 name: Introduction-of-VMs
 class: img-right
-VM 환경에서의 특징
+VM 환경
 -------------------------
 .center[![:scale 100%](images/vm_flow.png)]
 
 <br><br>
-* 더 나은 HW 활용
+* 하드웨어 활용도 향상
 * 하이퍼 바이저의 기본 네트워킹
 * VM 이동성
-* 일부 수평 확장
+* 약간의 수평 확장
 * Load Balancer 환용
-* 스패닝 트리 (하나로 부터 분산되는 형태)
+* 스패닝 트리 - 이중화된 네트워크 장비 구성으로 유휴 장비 발생
 
 ???
 Fortunately, a relic from the distant past was found, dusted off, restored, vastly improved, and delivered as a new, shiny toy: the Virtual Machine. This gave us better resource utilization of our servers. VMs images could be moved from host to host, which meant horizontal scaling was a little easier to achieve. Virtual computing environments also gave way to broader adoption of load balancing tools, which is still an integral part of servicing applications today.
@@ -77,16 +77,16 @@ Fortunately, a relic from the distant past was found, dusted off, restored, vast
 ---
 name: Introduction-of-the-Fabric
 class: img-right
-Fabric한 구조의 환경 특징
+Fabric 기반 네트워크 환경
 -------------------------
 .center[![:scale 100%](images/fabric_flow.png)]
 
 <br><br>
-* L2 Fabrics
-* 대부분 독점적 인 L2 라우팅
-* 더 많은 단일 서비스 인스턴스
-* 더 많은 Load Balancer
-* Spine & Leaf
+* 확장성을 고려한 L2 Fabrics 도입
+* 대부분 독점적인 L2 라우팅
+* 서비스 인스턴스의 증가
+* 로드 밸런서 사용 증가
+* Leaf/Spine 구조
 
 ???
 As hypervisors started becoming the standard for data centers, we started seeing that support for VM migrations and mobility across subnets was limited. So L2 fabrics were created in order to stretch L2 VLANs across those subnets, and it provided us with a (mostly) full-mesh network. That meant better connectivity for more services and more load balancers. But these were very complex to implement, and if not done well, would yield poor network performance and outages tended to have a larger blast radius.
@@ -99,11 +99,11 @@ class: img-right
 .center[![:scale 100%](images/microservices.png)]
 
 <br><br>
-* 높은 유지관리와 테스트는 기본
+* 유지관리와 테스트 편의성 증대
 * 느슨한 결합
 * 독립적으로 배포 가능
-* 비즈니스 역량을 중심으로 구성
-* 소규모 팀이 운영하고 소유함
+* 비즈니스 기능 중심으로 구성
+* 소규모 팀이 소유하고 운영
 
 ???
 At the same time networking capacity was growing, development teams' frustration was growing with their monolithic application model. Teams were completely dependent on one another, so the slowest team was as fast as your software could be delivered. So they started breaking up portions of their application into smaller, single-purpose services. It was still used by the main application, but it was now decoupled and could be released independent of any other application or service. This meant smaller teams and higher efficiencies.
@@ -116,8 +116,8 @@ SDN
 .center[![:scale 100%](images/sdn_flow.png)]
 
 <br><br>
-* Network automation
-* Self-Service
+* 네트워크 자동화
+* 셀프 서비스
 * 업무분담 - 누가 SDN을 운영해야 하죠?
 * 네트워크 관리자에게 부담이 되는 낮은 가시성
 
@@ -140,7 +140,7 @@ Cloud computing brought us new solutions to old problems, like auto-scaling, man
 ---
 name: Introduction-of-the-Multi-Cloud-K8s
 class: img-right
-쿠버네티스 같은 컨테이너 환경은?
+멀티 클라우드 - 쿠버네티스 환경
 -------------------------
 .center[![:scale 100%](images/hybrid_k8s_flow.png)]
 
@@ -154,11 +154,11 @@ Kubernetes brought us yet another layer of network abstraction. It has its own n
 
 ---
 name: Introduction-Summary
-Summary
+요약
 -------------------------
 .center[![:scale 50%](images/static_to_dynamic_flow.png)]
-보시다시피 네트워킹 모델이 크게 변경되었습니다.
-Consul의 작동 방식에 대해 조금 더 배우고 Consul과 함께 이러한 문제를 다시 살펴볼 수 있습니다.
+네트워킹 모델이 크게 변경되었습니다.
+Consul의 작동 방식에 대해 조금 더 배우고 Consul과 함께 이러한 문제를 어떻게 해결 할 수 있는지 알아보겠습니다.
 
 ???
 In summary, networking has changed significantly, but the need to simplify network communication has become more important. So we're going to take some time today to learn how Consul can address these challenges.

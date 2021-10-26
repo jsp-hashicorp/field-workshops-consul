@@ -39,8 +39,8 @@ Consul 기본 아키텍처 - Gossip
 * 모든 에이전트 통신은 Gossip 프로토콜을 통해 이루어짐
 * Consul 에이전트에 대한 자동 구성 및 데이터 센터 검색
 * 에이전트 실패는 서버 기준이 아닌 집합된 에이전트 수준에서 수행
-* Gossip을 사용하면 기존 하트 비트 방식에 비해 높은 확장 성이 가능
-* 노드 실패는 에이전트 실패로 유추
+* Gossip을 사용하면 기존 하트 비트 방식에 비해 높은 확장성 제공
+* 노드 실패는 에이전트 실패로 추론 가능 
 
 ???
 Consul uses the gossip protocol for agent-to-agent communication. This provides much greater efficiency with overall Consul communications. Agents can communicate with one another and either obtain information about its peers, or disseminate information to its neighbors.
@@ -48,14 +48,14 @@ Consul uses the gossip protocol for agent-to-agent communication. This provides 
 ---
 name: Introduction-to-Consul-Consensus
 class: img-right
-Consul 기본 아키텍처 - Consensus
+Consul 기본 아키텍처 - Consensus(합의)
 -------------------------
 .center[![:scale 100%](images/multi-datacenter-federation.png)]
 
 * 모든 Consul 데이터 센터에는 연결된 에이전트를 관리하기 위해 함께 작동하는 서버 노드 그룹이 있음
 * Raft를 사용하여 서버 노드가 리더를 선택
 * 리더는 모든 쿼리를 처리하고 KV 스토어에 대한 쓰기 권한을 가짐
-* 트랜잭션 복제 담당
+* 트랜잭션 복제에 대한 책임
 * 서버 노드에 대한 모든 요청은 리더에게 라우팅
 
 ???
@@ -70,8 +70,8 @@ Consul 기본 아키텍처 - Multi-DC
 
 * WAN 연결을 통한 가십도 가능
 * 한 데이터 센터의 요청을 다른 데이터 센터로 전달
-* 서비스 수준 DR을 허용
-* 지리적 서비스 요청 처리가 가능
+* 서비스 수준 DR 지원
+* 지리적 서비스 요청 처리 지원
 
 ???
 The server agents also operate as part of a WAN gossip pool. This pool is different from the LAN pool as it is optimized for the higher latency of the internet and is expected to contain only other Consul server agents. The purpose of this pool is to allow datacenters to discover each other in a low-touch manner. When a server receives a request for a different datacenter, it forwards it to a random server in the correct datacenter. That server may then forward to the local leader, so cross-datacenter requests are relatively fast and reliable.
@@ -85,6 +85,7 @@ Consul의 대표적인 두가지 프로토콜에 대해 이해하는 시간이�
 * Consensus
 * Gossip
 
+위 프로토콜에 대한 추가적인 내용은 Appendix에서 확인할 수 있습니다.
 
 ???
 We've touched briefly on the two main protocols Consul uses. If you'd like to dive a little deeper into both of these, you can find more information at the end of this slide deck.

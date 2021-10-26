@@ -5,7 +5,7 @@ class: title
 
 ---
 name: Consul-Use-Cases
-Consul 적용의 단계
+Consul 적용 단계
 -------------------------
 .center[![:scale 70%](images/use_cases.png)]
 
@@ -15,15 +15,15 @@ As we start to dive into how to use Consul it is important to think about how yo
 ---
 name: Load-Balancers-Service-Discovery
 class: compact
-Service Discovery and Load Balancers
+서비스 디스커버리와 로드 밸런서
 -------------------------
 
 .center[![:scale 45%](images/consul-service-discovery.001.png)]
 
-* 서비스가 어디에 존재하는지 아는것이 중요함
-* 전통적인 Load Balancer로 접근하면
+* 서비스 위치가 중요함
+* 전통적인 Load Balancer를 사용하는 경우
    * 비쌈
-   * 점점 유지보수가 어려워짐
+   * 유지보수가 어려워짐
    * 확장에 따라 부하가 증가함
    * 모든 백엔드 시스템의 상태를 확인할 수 있는 프로브가 필요함
 ???
@@ -32,12 +32,12 @@ The current mode of operation for handling service discovery is usually done wit
 ---
 name: Service-Discovery-with-Consul
 class: compact
-Service Discovery with Consul
+Consul 기반 서비스 디스커버리
 -------------------------
 .center[![:scale 60%](images/consul-service-discovery.002.png)]
-* 각 서비스는 자체적으로 등록됨(self-register)
+* 서비스는 직접 등록 작업 수행(self-register)
 * 서비스 상태는 해당하는 서비스에 의해 정의되고 Consul Agent가 관리
-* 서비스는 DNS나 HTTP를 통해 서로 쿼리
+* 서비스는 DNS나 HTTP를 통해 다른 서비스에 대한 질의 가능
 
 ???
 In a consul environment services are able to register themselves by defining health checks, service names and optional metadata. Coupled with the gossip protocol--which provides node-level health data--service availability and routing data is updated in near real time.  This allows service discovery to be offloaded from the network and load balancer teams and shifted to the application teams.  This is a crucial first step for an organization to take advantage of the benefits of a service mesh, or if they want to simplify basic application routing decisions.
@@ -46,9 +46,9 @@ In a consul environment services are able to register themselves by defining hea
 ---
 name: Myriad-Use-Cases
 class: compact
-Solve Network Problems with Service Discovery
+서비스 디스커버리로 네트워크 문제 해결하기
 -------------------------
-Consul을 사용하면 DNS 기반 서비스 카탈로그에 논리적인 서비스 쿼리를 구축 할 수 있습니다. 이렇게하면 기본 데이터 센터를 사용할 수 없을 때 투명한 장애 조치가 가능합니다.
+Consul을 사용하면 DNS 기반 서비스 카탈로그를 사용하여 로직이 반영된 준비된 쿼리를 사용 할 수 있습니다. 이를 통해 기본 데이터 센터를 사용할 수 없을 때 Transparent Failover가 가능합니다.
 
 ```json
 {
@@ -89,16 +89,16 @@ class: compact
 .center[![:scale 50%](images/consul-service-discovery.003.png)]
 
 * 애플리케이션이 서로를 찾을 수있게되면 보안이 다음 관심사가됩니다.
-  * 일반적으로 많은 양의 방화벽으로 수행됩니다.
-  * 이것은 네트워크 조직에 상당한 부담을 추가합니다.
-  * 방대한 방화벽 규칙 목록이 요구됩니다.
+* 일반적으로 많은 양의 방화벽으로 수행됩니다.
+* 이것은 네트워크 조직에 상당한 부담을 추가합니다.
+* 방대한 방화벽 규칙 목록이 요구됩니다.
 
 ???
 Okay, so the bottom line is secure networking in moderng application operations is hard. We need devices and services to be able to communicate with one another, and even discover one another, but it can't just be a free-for-all. Our network needs rules to govern who can talk to who, and what information can be passed over it. We traditionally did this with firewalls, but that adds a huge burden by creating single points of failure and potentially massive lists of firewall rules, often updated by humans in human time.
 
 ---
 name: Firewalls-Wont-Scale
-기존의 방화벽 모델은 확장성이 떨어집니다.
+방화벽은 확장성이 떨어집니다.
 -------------------------
 .center[![:scale 70%](images/consul-service-discovery.004.png)]
 * 단단한 상호 의존성
@@ -109,7 +109,7 @@ name: Firewalls-Wont-Scale
 If you take this mindset to its logical conclusion you will end up with something like this.  Firewalls attached to every service trying to enforce all upstream and downstream communications channels.  At scale and with the speed and dynamics of modern application delivery, this is completely unmanageable.
 ---
 name: Consul-Service-Mesh
-Consul Connect - A Modern Service Mesh
+Consul Connect - 최신 서비스 메쉬
 -------------------------
 .center[![:scale 80%](images/consul-service-discovery.005.png)]
 
@@ -151,7 +151,7 @@ As you can see in this example, the connection definition is defined as a part o
 
 ---
 name: How-do-we-secure-this
-어떻게 이 상태에서 보안을 강화할 수 있을까요?
+어떻게 이 상태에서 안전하게 연결할 수 있을까?
 -------------------------
 .center[![:scale 70%](images/consul-service-discovery.006.png)]
 .center[큰 힘에는 큰 책임이 따른다.🕸️]
@@ -164,7 +164,7 @@ name: Mesh-Gateways
 Consul Mesh Gateways
 -------------------------
 .center[![:scale 70%](images/consul-service-discovery.007.png)]
-.center[서로 다른 환경에서 모든 앱 또는 서비스 간의 보안 연결]
+.center[서로 다른 환경에서 앱 또는 서비스 간의 안전한 연결]
 
 ???
 This problem is addressed with the addition of mesh gateways.  Mesh gateways allow for a single point (or points) at the edge of networks that all mesh traffic flows through.  This allows the network teams to control the ingress/egress points at the edge of the network while still allowing the app teams the flexibility to run application components on the platform of their choosing.  In the next lab we are going to explore the concepts of a service mesh in instruqt.

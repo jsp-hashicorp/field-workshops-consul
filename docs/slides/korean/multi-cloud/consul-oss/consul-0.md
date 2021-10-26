@@ -4,7 +4,7 @@ count: false
 ![:scale 30%](images/consul_logo.svg)
 .titletext[
 Consul OSS Workshop]
-모든 플랫폼상의 서비스를 안전하게 연결
+서로 다른 플랫폼상의 서비스를 안전하게 연결
 
 ???
 Consul OSS 초보자 가이드에 오신 것을 환영합니다. 이 슬라이드덱과 함께 제공되는 실습은 강사 주도식 또는 자가지도식 워크샵으로 제공 될 수 있습니다. 이 콘텐츠는 3-4 시간이 소요됩니다.
