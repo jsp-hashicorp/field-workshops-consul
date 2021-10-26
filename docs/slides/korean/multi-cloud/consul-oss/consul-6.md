@@ -164,29 +164,3 @@ name: Segmentation-Lab
 ]
 
 https://play.instruqt.com/hashicorp/tracks/service-mesh-with-consul
----
-name: Segmentation-Lab-K8s
-# 👩‍💻 Bonus Lab: Service Segmentation - K8s
-.blocklist[
-You will accomplish the following in this lab:
-
-* K8에 Connect 배포
-* 마이크로 서비스 연결
-* 애플리케이션 확장
-* 애플리케이션 성능 관찰
-]
-
-https://play.instruqt.com/hashicorp/tracks/service-mesh-with-consul-k8s
-
----
-name: Segmentation-Lab-Hybrid
-# 👩‍💻 Bonus Lab: Service Segmentation - Hybrid
-.blocklist[
-You will accomplish the following in this lab:
-
-* K8 및 VM에 Connect 배포
-* WAN을 통해 두 개의 데이터 센터 연결
-* 메시 게이트웨이를 사용하여 다중 데이터 센터 네트워크 복잡성 해결
-]
-
-https://play.instruqt.com/hashicorp/tracks/service-mesh-with-consul-hybrid
